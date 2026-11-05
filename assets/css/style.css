@@ -12,6 +12,7 @@ h1.t,h2.t{font-weight:inherit}
 .hit{position:absolute;border-radius:999px;z-index:2}
 .hit:focus-visible{outline:3px solid #2a7de1;outline-offset:2px}
 .anchor{position:absolute;left:0}
+.map{position:absolute;border:0;display:block;z-index:3;background:#e8e5d8}
 /* 768〜1023px はスマホ版を最大1.6倍で中央に置く（PC版を縮めると文字が小さくなりすぎるため） */
 @media (max-width:1023px){.col--pc{display:none}.col--sp{display:block;margin:0 auto}}
 @media (min-width:768px) and (max-width:1023px){body{background:#f4f3ea}.col--sp{background:#fff;box-shadow:0 0 0 1px #e6e3d6}}
