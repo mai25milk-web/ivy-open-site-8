@@ -12,23 +12,25 @@ h1.t,h2.t{font-weight:inherit}
 .hit{position:absolute;border-radius:999px;z-index:2}
 .hit:focus-visible{outline:3px solid #2a7de1;outline-offset:2px}
 .anchor{position:absolute;left:0}
-@media (max-width:767px){.col--pc{display:none}.col--sp{display:block}}
+/* 768〜1023px はスマホ版を最大1.6倍で中央に置く（PC版を縮めると文字が小さくなりすぎるため） */
+@media (max-width:1023px){.col--pc{display:none}.col--sp{display:block;margin:0 auto}}
+@media (min-width:768px) and (max-width:1023px){body{background:#f4f3ea}.col--sp{background:#fff;box-shadow:0 0 0 1px #e6e3d6}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-.f-1-2{height:1140px}
+.f-1-2{height:776px}
 .f-1-231{height:920px}
 .f-1-365{height:1230px}
 .f-1-468{height:800px}
 .f-1-688{height:1080px}
 .f-1-765{height:760px}
-.f-1-792{height:840px}
+.f-1-792{height:1104px}
 .f-1-919{height:770px}
 .f-1-981{height:980px}
-.f-1-1020{height:1010px}
+.f-1-1020{height:688px}
 .f-1-1153{height:1296px}
 .f-1-1210{height:1860px}
 .f-1-1278{height:960px}
 .f-1-1397{height:881px}
 .f-1-1439{height:830px}
-.f-1-1470{height:668px}
+.f-1-1470{height:935px}
 .f-1-1506{height:960px}
 .f-1-1539{height:900px}
