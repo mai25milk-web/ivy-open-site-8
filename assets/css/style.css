@@ -16,6 +16,33 @@ h1.t,h2.t{font-weight:inherit}
 /* 768〜1023px はスマホ版を最大1.6倍で中央に置く（PC版を縮めると文字が小さくなりすぎるため） */
 @media (max-width:1023px){.col--pc{display:none}.col--sp{display:block;margin:0 auto}}
 @media (min-width:768px) and (max-width:1023px){body{background:#f4f3ea}.col--sp{background:#fff;box-shadow:0 0 0 1px #e6e3d6}}
+.lay{position:absolute;display:block;pointer-events:none}
+.photo{overflow:hidden}.photo img{width:100%;height:100%;display:block}
+.hit.btn{transition:box-shadow .3s}
+.hit.btn:hover{box-shadow:0 0 0 4px rgba(216,27,106,.22)}
+.curtain{display:none}
+/* ---- モーション（prefers-reduced-motion では付けない） ---- */
+.motion .curtain{display:grid;place-items:center;position:fixed;inset:0;z-index:100;background:#f4f3ea;transition:transform .8s cubic-bezier(.7,0,.2,1)}
+.motion .curtain__logo{font:400 40px/1 'Darumadrop One',var(--jp);color:#333;display:flex;align-items:center;gap:16px;transition:opacity .3s}
+.curtain__dots{display:flex;gap:6px}.curtain__dots i{width:10px;height:10px;border-radius:50%;background:#d81b6a;animation:hop .9s ease-in-out infinite}
+.curtain__dots i:nth-child(2){background:#f2c500;animation-delay:.12s}.curtain__dots i:nth-child(3){background:#2e8fd6;animation-delay:.24s}
+@keyframes hop{50%{transform:translateY(-8px)}}
+.motion.is-ready .curtain{transform:translateY(-100%)}.motion.is-ready .curtain__logo{opacity:0}
+.motion .fv{opacity:.01;transform:translateY(24px)}
+.motion.is-ready .fv{opacity:1;transform:none;transition:opacity .8s,transform 1s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d) + .45s)}
+.motion .photo img{transform:scale(1.12)}
+.motion.is-ready .photo img{transform:none;transition:transform 1.8s cubic-bezier(.2,.7,.2,1) .3s}
+.lay.badge{z-index:1}.t{z-index:1}
+.motion .badge{transform:scale(.01) rotate(-30deg)}
+.motion.is-ready .badge{transform:none;transition:transform .7s cubic-bezier(.3,1.6,.5,1) 1.1s}
+.motion .deco{transform:scale(.4);opacity:.01}
+.motion.is-ready .f-1-2 .deco,.motion.is-ready .f-1-1020 .deco,.motion .sec.is-in .deco{opacity:1;transform:none;transition:opacity .6s,transform .9s cubic-bezier(.3,1.5,.5,1);transition-delay:.9s}
+.motion .sec.is-in .deco{transition-delay:.2s}
+.motion .deco.is-float{animation:float 7s ease-in-out infinite alternate}.motion .deco--1.is-float{animation-duration:9s;animation-direction:alternate-reverse}.motion .deco--2.is-float{animation-duration:8s}
+@keyframes float{from{transform:translateY(0) rotate(0)}to{transform:translateY(-10px) rotate(3deg)}}
+.motion .rv{opacity:0;transition:opacity .7s;transition-delay:var(--d)}
+.motion .rv--h{transform:translateY(16px);transition:opacity .7s,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d)}
+.motion .sec.is-in .rv{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .f-1-2{height:776px}
 .f-1-231{height:920px}

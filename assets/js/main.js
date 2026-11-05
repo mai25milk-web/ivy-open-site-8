@@ -13,4 +13,21 @@
   }
   fit();
   window.addEventListener('resize', fit);
+
+  // モーション：幕は最短0.6秒・最長1.4秒で上げる。セクションは見えたら文字を出す
+  var root = document.documentElement;
+  if (root.classList.contains('motion')) {
+    var t0 = Date.now(), done = false;
+    var ready = function () { if (done) return; done = true; setTimeout(function () { root.classList.add('is-ready');
+      setTimeout(function () { var d = document.querySelectorAll('.f-1-2 .deco, .f-1-1020 .deco'); for (var i = 0; i < d.length; i++) d[i].classList.add('is-float'); }, 2000); }, Math.max(0, 600 - (Date.now() - t0))); };
+    var hero = document.querySelector((document.documentElement.clientWidth < 1024 ? '.col--sp' : '.col--pc') + ' .photo img');
+    if (hero && !hero.complete) hero.addEventListener('load', ready); else ready();
+    setTimeout(ready, 1400);
+    var secs = document.querySelectorAll('.sec');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var s = e.target; s.classList.add('is-in'); io.unobserve(s);
+        setTimeout(function () { var d = s.querySelectorAll('.deco'); for (var i = 0; i < d.length; i++) d[i].classList.add('is-float'); }, 1400); }); }, { rootMargin: '0px 0px -15% 0px' });
+      for (var i = 0; i < secs.length; i++) if (!/f-1-2|f-1-1020/.test(secs[i].className)) io.observe(secs[i]);
+    } else for (var j = 0; j < secs.length; j++) secs[j].classList.add('is-in');
+  }
 })();
